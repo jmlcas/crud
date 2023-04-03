@@ -11,7 +11,7 @@ $user = 'User';
 $pass = 'p4ssw0rd';
 
 // database name
-$mydatabase = 'users';
+$mydatabase = 'app';
 // check the mysql connection status
 
 $conn = new mysqli($host, $user, $pass, $mydatabase);
