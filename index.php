@@ -10,11 +10,24 @@ $user = 'User';
 //database user password
 $pass = 'p4ssw0rd';
 
-// check the MySQL connection status
-$conn = new mysqli($host, $user, $pass);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} else {
-    echo "Connected to MySQL server successfully!";
+// database name
+$mydatabase = 'users';
+// check the mysql connection status
+
+$conn = new mysqli($host, $user, $pass, $mydatabase);
+
+// select query
+$sql = 'SELECT * FROM users';
+
+if ($result = $conn->query($sql)) {
+    while ($data = $result->fetch_object()) {
+        $users[] = $data;
+    }
+}
+
+foreach ($users as $user) {
+    echo "<br>";
+    echo $user->name . " " . $user->last_name;
+    echo "<br>";
 }
 ?>
